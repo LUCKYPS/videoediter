@@ -1,0 +1,175 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    
+    min-height: 100vh;
+    background: rgb(236, 182, 182);
+    
+
+}
+body, .video_controls , .video_timer , .option{
+    display:flex ;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container
+{
+    max-width: 900px;
+    width: 98%;
+    background: black;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.container.fullscreen{
+    max-width: 100%;
+    width: 100%;
+}
+.wrapper
+{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.wrapper::before
+{
+    content: "";
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: calc(100% + 35px);
+    background: linear-gradient(to top,rgba(0,0,0,0.7), transparent);
+}
+.video_time{
+    height: 70px;
+    width: 100%;
+    cursor: pointer;
+
+}
+.progress-area span{
+    position: absolute;
+    left: 50%;
+    top: -25px;
+    color:white;
+    transform: translateX(-50%);
+    font-size: 13px;
+}
+.video_time .progress-area{
+    height: 3px;
+    position: relative;
+    background: blanchedalmond;
+
+}
+.progress-area .progress-bar{
+    width: 0%;
+    height: 100%;
+    background: aqua;
+    position: relative;
+}
+.progress-area .progress-bar::before{
+    content: "";
+    right: 0;
+    top: 50%;
+    height: 13px;
+    width: 13px;
+    background: inherit;
+    position: absolute;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+.progress-area span, .progress-area  .progress-bar::before{
+display: none;
+
+}
+.video_time:hover  .progress-area span, 
+.video_time:hover  .progress-area  .progress-bar::before{
+    display: block;
+    
+    }
+.video_controls  .option{
+width: 100%;
+}
+.video_controls  .option:first-child{
+    justify-content: flex-start;
+
+}
+.video_controls  .option:last-child{
+    justify-content: flex-end;
+}
+.option button{
+    width: 40px;
+    height: 40px;
+    border: none;
+    color: azure;
+    background: none;
+    font-size: large;
+    cursor: pointer;
+
+}
+.option input
+{
+    height:5px;
+    max-width: 80px;
+}
+.option .video_timer{
+    font-size: 14px;
+    color: rgb(225, 235, 234);
+    margin-left: 25px;
+}
+.video_timer .seperator{
+    font-size: 16px;
+    margin: 0 5px;
+    font-family:'Times New Roman', Times, serif;
+
+}
+.playback-content{
+    position: relative;
+}
+.playback-content .speed-options{
+    position: absolute;
+    bottom: 40px;
+    left: -40px;
+    opacity: 0;
+    pointer-events: none;
+    background: bisque;
+    list-style: none;
+    transition: opacity 0.13s ease;
+    width: 75px;
+    border-radius: 4px;
+}
+.playback-content .speed-options.show{
+    opacity: 1;
+    pointer-events: auto;
+}
+ .speed-options li{
+    font-size: 14px;
+    padding: 5px 0 5px 15px;
+    cursor: pointer;
+ }
+ .speed-options li.active{
+    background: cornflowerblue;
+    color: bisque;
+ }
+.container video
+{
+    width: 100%;
+}
+.video_controls 
+{
+    padding: 5px 15px 10px;
+}
+.option button :where(i,span){
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+}
